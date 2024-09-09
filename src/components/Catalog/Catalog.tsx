@@ -2,15 +2,14 @@ import { useState } from "react";
 import "./styles.css";
 import Card from "./Card/Card";
 import Filters from "./Filters/Filters";
+import SelectedFilters from "./Filters/SelectedFilters/SelectedFilters";
 import products from "../../assets/db.json";
 
 export default function Catalog() {
-  // Estado para los filtros seleccionados
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-  // Función para filtrar productos
   const filteredProducts = products.data.filter((product) => {
     const matchesCategory = selectedCategory
       ? product.category === selectedCategory
@@ -24,7 +23,6 @@ export default function Catalog() {
     return matchesCategory && matchesSize && matchesColor;
   });
 
-  // Función para limpiar filtros
   const clearFilters = () => {
     setSelectedCategory(null);
     setSelectedSize(null);
@@ -35,11 +33,19 @@ export default function Catalog() {
     <div className="catalog__container">
       <div className="catalogo__content">
         <div className="catalog__filters">
+          <SelectedFilters
+            selectedCategory={selectedCategory}
+            selectedSize={selectedSize}
+            selectedColor={selectedColor}
+          />
           <Filters
             setSelectedCategory={setSelectedCategory}
             setSelectedSize={setSelectedSize}
             setSelectedColor={setSelectedColor}
             clearFilters={clearFilters}
+            selectedCategory={selectedCategory}
+            selectedSize={selectedSize}
+            selectedColor={selectedColor}
           />
         </div>
         <div className="catalog__products-layout">

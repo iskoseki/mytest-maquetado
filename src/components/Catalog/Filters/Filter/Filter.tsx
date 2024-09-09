@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles.css";
 
@@ -6,20 +6,46 @@ type FilterProps = {
   name: string;
   options: string[];
   onChange: (selected: string | null) => void;
+  selectedOption: string | null;
 };
 
-export default function Filter({ name, options, onChange }: FilterProps) {
+export default function Filter({
+  name,
+  options,
+  onChange,
+  selectedOption,
+}: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    onChange(option);
+    if (option === selectedOption) {
+      onChange(null); // Deselecciona si se hace clic en la opción ya seleccionada
+    } else {
+      onChange(option); // Selecciona la nueva opción
+    }
+    // No cerrar el menú aquí
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        drawerRef.current &&
+        !drawerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false); // Cierra el menú si se hace clic fuera del menú
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="filter-drawer">
@@ -32,7 +58,7 @@ export default function Filter({ name, options, onChange }: FilterProps) {
         classNames="drawer"
         unmountOnExit
       >
-        <div className="drawer-content">
+        <div className="drawer-content" ref={drawerRef}>
           <ul>
             {options.map((option, index) => (
               <li

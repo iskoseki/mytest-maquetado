@@ -1,6 +1,6 @@
 import "./styles.css";
 
-import Logo from "../../../assets/logo.svg";
+import Logo from "/logo.svg";
 import { NavigationHamburger } from "./NavigationHamburger";
 import { NavigationHeadButtons } from "../NavigationHeadButtons";
 

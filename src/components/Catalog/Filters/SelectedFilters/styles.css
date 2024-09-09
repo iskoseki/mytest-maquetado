@@ -1,0 +1,29 @@
+.selected-filters-container {
+  margin-bottom: 1rem;
+}
+
+.selected-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.selected-filter {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.clear-selected-filters-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.clear-selected-filters-button:hover {
+  text-decoration: underline;
+}

@@ -6,19 +6,59 @@
   min-width: 260px;
   width: 100%;
 }
+
 .clear-filters-button {
   background-color: transparent;
   outline: auto;
   padding: 5px;
   border: none;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
+
 .clear-filters-button:hover {
-  background-color: var(--accent-color);
+  background-color: var(--primary-color);
   color: white;
+  cursor: pointer;
 }
+
 @media screen and (max-width: 768px) {
   .filters__list-container {
     display: none;
   }
+}
+
+/* Estilos para el filtro */
+
+.drawer-toggle {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawer-toggle:hover {
+  background-color: #eee;
+}
+
+.drawer-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drawer-content li {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawer-content li:hover {
+  background-color: #f0f0f0; /* Color al pasar el ratón por encima */
+}
+
+.drawer-content li.selected {
+  background-color: #cce7ff; /* Color de fondo para la opción seleccionada */
+  font-weight: bold; /* Opcional: para hacer que el texto de la opción seleccionada se vea más destacado */
 }
