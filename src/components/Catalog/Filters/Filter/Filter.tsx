@@ -2,7 +2,12 @@ import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles.css";
 
-export default function Filter() {
+type FilterProps = {
+  name: string;
+  options: string[];
+};
+
+export default function Filter({ name, options }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -12,7 +17,7 @@ export default function Filter() {
   return (
     <div className="filter-drawer">
       <button onClick={toggleDrawer} className="drawer-toggle">
-        Categoría
+        {name}
       </button>
       <CSSTransition
         in={isOpen}
@@ -22,15 +27,9 @@ export default function Filter() {
       >
         <div className="drawer-content">
           <ul>
-            <li>
-              <label htmlFor="option1">Opción 1</label>
-            </li>
-            <li>
-              <label htmlFor="option2">Opción 2</label>
-            </li>
-            <li>
-              <label htmlFor="option3">Opción 3</label>
-            </li>
+            {options.map((option, index) => (
+              <li key={index}>{option}</li>
+            ))}
           </ul>
         </div>
       </CSSTransition>

@@ -10,7 +10,6 @@ export default function Catalog() {
         <div className="catalog__filters">
           <Filters />
         </div>
-
         <div className="catalog__products-layout">
           {products.data.map((product, index) => (
             <div key={index} className="product-card">

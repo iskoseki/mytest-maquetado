@@ -63,6 +63,8 @@
 @media screen and (max-width: 845px) {
   .filters__list-title {
     cursor: pointer;
-    border-radius: 1px solid black;
+    width: fit-content;
+    padding: 1px 5px;
+    border: 1px solid #000;
   }
 }

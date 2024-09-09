@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import Filter from "../Filter/Filter";
 import "./styles.css";
+import FiltersListContainer from "./FiltersListContainer";
+import { FiltersListTitle } from "./FiltersListTitle";
 
 const FiltersList: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -14,6 +15,7 @@ const FiltersList: React.FC = () => {
   const closeFilters = () => {
     setShowFilters(false);
   };
+
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 845);
@@ -25,10 +27,11 @@ const FiltersList: React.FC = () => {
 
   return (
     <>
-      <FiltersListTitle onClick={toggleFilters} />
-
+      <FiltersListTitle title="Filtrar" onClick={toggleFilters} />
       {isDesktop ? (
-        <FiltersListContainer />
+        <div className="filters__list-desktop">
+          <FiltersListContainer />
+        </div>
       ) : (
         <CSSTransition
           in={showFilters}
@@ -46,31 +49,13 @@ const FiltersList: React.FC = () => {
 const FiltersListDrawer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   return (
     <div className="filters__list">
-      <FiltersListTitle />
+      <FiltersListTitle title="Filtrar" />
       <button onClick={onClose} className="close-button">
         X
       </button>
-      <Filter />
-      <Filter />
-      <Filter />
-    </div>
-  );
-};
-const FiltersListContainer: React.FC = () => {
-  return (
-    <div className="filters__list-desktop">
-      <Filter />
-      <Filter />
-      <Filter />
-    </div>
-  );
-};
 
-const FiltersListTitle: React.FC<{ onClick?: () => void }> = ({ onClick }) => {
-  return (
-    <h5 className="filters__list-title" onClick={onClick}>
-      Filtrar
-    </h5>
+      <FiltersListContainer />
+    </div>
   );
 };
 

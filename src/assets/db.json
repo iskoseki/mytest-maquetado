@@ -4,55 +4,97 @@
             "id": 1,
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
-            "price": 100
+            "price": 100,
+            "category": "Zapatillas",
+            "sizes": ["41"],
+            "colors": ["Rojo"]
         },
         {
             "id": 2,
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
-            "price": 100
+            "price": 100,
+            "category": "Zapatillas",
+             "sizes": ["40"],
+            "colors": ["Azul"]
         },
         {
             "id": 3,
             "url": "/assets/productos/zapatilla_3.jpg",
             "title": "Zapatilla 3 Run",
-            "price": 100
+            "price": 100,
+            "category": "Zapato",
+            "sizes": ["40","41"],
+            "colors": ["Azul"]
         },
         {
             "id": 3,
             "url": "/assets/productos/zapatilla_3.jpg",
             "title": "Zapatilla 3 Run",
-            "price": 100
+            "price": 100,
+            "category": "Zapato",
+            "sizes": ["40","41"],
+            "colors": ["Verde"]
         },
          {
             "id": 2,
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
-            "price": 100
+            "price": 100,
+            "category": "Sandalia",
+            "sizes": ["40","41","42"],
+            "colors": ["Rojo"]
         },
           {
             "id": 1,
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
-            "price": 100
+            "price": 100,
+            "category": "Sandalia",
+            "sizes": ["41","42"],
+            "colors": ["Negro"]
         },
         {
             "id": 1,
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
-            "price": 100
+            "price": 100,
+            "category": "Zapatilla",
+            "sizes": ["40","41","42"],
+            "colors": ["Rojo"]
         },
         {
             "id": 2,
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
-            "price": 100
+            "price": 100,
+            "category": "Zapato",
+            "sizes": ["39","40","41","42"],
+            "colors": ["Rojo"]
+
         },
         {
             "id": 3,
             "url": "/assets/productos/zapatilla_3.jpg",
             "title": "Zapatilla 3 Run",
-            "price": 100
+            "price": 100,
+            "category": "Zapato",
+            "sizes": ["39","40","41","42", "44"], 
+            "colors": ["Rojo", "Azul", "Verde"]
         }
-    ]
+    ],
+    "options": {
+        "categories":{
+            "name": "Categorias",
+            "options": ["Zapatilla", "Zapato", "Sandalia"]
+        },
+        "sizes": {
+            "name": "Talle",
+            "options": ["39", "40", "41", "42", "44"]
+        },
+        "colors": {
+            "name": "Colores",
+            "options":["Rojo", "Azul", "Verde", "Negro", "Blanco"]
+        }
+    } 
 }
