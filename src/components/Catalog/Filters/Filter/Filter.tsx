@@ -6,7 +6,7 @@ type FilterProps = {
   name: string;
   options: string[];
   onChange: (selected: string | null) => void;
-  selectedOption: string | null;
+  selectedOption?: string | null;
 };
 
 export default function Filter({

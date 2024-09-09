@@ -8,7 +8,7 @@ interface FilterOption {
   options: string[];
 }
 
-interface Filters {
+export interface Filters {
   categories: FilterOption;
   sizes: FilterOption;
   colors: FilterOption;
