@@ -1,0 +1,8 @@
+.filters__head {
+  width: 100%;
+  border-bottom: 1px solid #000000;
+}
+.filters__title {
+  font-size: 1.5rem;
+  font-weight: 900;
+}

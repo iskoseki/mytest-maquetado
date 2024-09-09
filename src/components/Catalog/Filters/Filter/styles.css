@@ -1,0 +1,47 @@
+.filter-drawer {
+  width: 100%;
+}
+
+.drawer-toggle {
+  background-color: var(--accent-color);
+  padding: 0.313rem 0.625rem;
+  text-align: left;
+  font-weight: 900;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.drawer-content {
+  padding: 0.313rem 0.625rem;
+}
+
+.drawer-content h2 {
+  font-size: 1rem;
+  font-weight: 900;
+  margin: 0;
+  padding: 0;
+}
+
+.drawer-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-enter {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease-in;
+}
+.drawer-enter-active {
+  max-height: 500px; /* Ajusta según sea necesario */
+}
+.drawer-exit {
+  max-height: 500px; /* Ajusta según sea necesario */
+  overflow: hidden;
+  transition: max-height 300ms ease-out;
+}
+.drawer-exit-active {
+  max-height: 0;
+}

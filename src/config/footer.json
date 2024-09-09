@@ -1,0 +1,20 @@
+{
+    "footer-links": [
+        {
+            "name": "Ayuda",
+            "url": "/"
+        },
+        {
+            "name": "Contacto",
+            "url": "/"
+        },
+        {
+            "name": "Términos y condiciones",
+            "url": "/"
+        },
+        {
+            "name": "Políticas de privacidad",
+            "url": "/"
+        }
+    ]
+}

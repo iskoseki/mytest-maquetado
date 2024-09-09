@@ -1,0 +1,32 @@
+.footer__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 58px;
+  background-color: var(--primary-color);
+}
+
+.footer__list {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.footer__link {
+  color: var(--secundary-color);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.footer__link:hover {
+  color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+  .footer__list {
+    flex-direction: column;
+  }
+}

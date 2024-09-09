@@ -1,0 +1,33 @@
+.nav__head-container {
+  max-width: 1366px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2.375rem;
+  display: flex;
+  justify-content: space-between;
+}
+.nav__brand {
+  display: flex;
+  align-items: center;
+}
+.nav__logo {
+  width: 206.01px;
+  height: 29.9px;
+}
+
+.nav__hamburger--desktop {
+  width: 90px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__hamburger--desktop {
+    width: auto;
+  }
+  .nav__head-container {
+    padding: 0 0.938rem;
+  }
+  .nav__logo {
+    width: 139.67px;
+    height: 20.27px;
+  }
+}

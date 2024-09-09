@@ -1,0 +1,14 @@
+.filters__container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  row-gap: 1rem;
+  min-width: 260px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .filters__list-container {
+    display: none;
+  }
+}

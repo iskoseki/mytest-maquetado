@@ -1,0 +1,26 @@
+.nav__icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav__icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav__icon {
+  filter: invert(100%);
+  width: 24px !important;
+  height: 24px !important;
+}
+@media (max-width: 768px) {
+  .nav__icon-button--desktop {
+    display: none;
+  }
+}
+@media (min-width: 1366px) {
+  .nav__icons {
+    position: relative;
+  }
+}
