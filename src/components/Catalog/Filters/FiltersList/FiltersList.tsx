@@ -1,62 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import React from "react";
 import "./styles.css";
-import FiltersListContainer from "./FiltersListContainer";
-import { FiltersListTitle } from "./FiltersListTitle";
+import filters from "../../../../assets/db.json";
+import Filter from "../Filter";
+import { Filters } from "./FiltersListContainer";
 
-const FiltersList: React.FC = () => {
-  const [showFilters, setShowFilters] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+interface FiltersListProps {
+  setSelectedCategory: (category: string | null) => void;
+  setSelectedSize: (size: string | null) => void;
+  setSelectedColor: (color: string | null) => void;
+}
 
-  const toggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
-
-  const closeFilters = () => {
-    setShowFilters(false);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 845);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+const FiltersListContainer: React.FC<FiltersListProps> = ({
+  setSelectedCategory,
+  setSelectedSize,
+  setSelectedColor,
+}) => {
+  const { options } = filters as { options: Filters };
 
   return (
     <>
-      <FiltersListTitle title="Filtrar" onClick={toggleFilters} />
-      {isDesktop ? (
-        <div className="filters__list-desktop">
-          <FiltersListContainer />
-        </div>
-      ) : (
-        <CSSTransition
-          in={showFilters}
-          timeout={10000}
-          classNames="filters__list"
-          unmountOnExit
-        >
-          <FiltersListDrawer onClose={closeFilters} />
-        </CSSTransition>
-      )}
+      <Filter
+        name={options.categories.name}
+        options={options.categories.options}
+        onChange={setSelectedCategory}
+      />
+      <Filter
+        name={options.sizes.name}
+        options={options.sizes.options}
+        onChange={setSelectedSize}
+      />
+      <Filter
+        name={options.colors.name}
+        options={options.colors.options}
+        onChange={setSelectedColor}
+      />
     </>
   );
 };
 
-const FiltersListDrawer: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  return (
-    <div className="filters__list">
-      <FiltersListTitle title="Filtrar" />
-      <button onClick={onClose} className="close-button">
-        X
-      </button>
-
-      <FiltersListContainer />
-    </div>
-  );
-};
-
-export default FiltersList;
+export default FiltersListContainer;

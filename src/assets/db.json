@@ -42,7 +42,7 @@
             "title": "Zapatilla 2000-X",
             "price": 100,
             "category": "Sandalia",
-            "sizes": ["40","41","42"],
+            "sizes": ["39"],
             "colors": ["Rojo"]
         },
           {
@@ -51,7 +51,7 @@
             "title": "Zapatilla 1-XFK",
             "price": 100,
             "category": "Sandalia",
-            "sizes": ["41","42"],
+            "sizes": ["23"],
             "colors": ["Negro"]
         },
         {
@@ -60,7 +60,7 @@
             "title": "Zapatilla 1-XFK",
             "price": 100,
             "category": "Zapatilla",
-            "sizes": ["40","41","42"],
+            "sizes": ["40"],
             "colors": ["Rojo"]
         },
         {
@@ -69,7 +69,7 @@
             "title": "Zapatilla 2000-X",
             "price": 100,
             "category": "Zapato",
-            "sizes": ["39","40","41","42"],
+            "sizes": ["42", "13"],
             "colors": ["Rojo"]
 
         },
@@ -90,7 +90,7 @@
         },
         "sizes": {
             "name": "Talle",
-            "options": ["39", "40", "41", "42", "44"]
+            "options": ["39", "40", "41", "42", "44", "13","23"]
         },
         "colors": {
             "name": "Colores",

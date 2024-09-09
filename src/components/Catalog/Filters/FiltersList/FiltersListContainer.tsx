@@ -8,24 +8,42 @@ interface FilterOption {
   options: string[];
 }
 
-interface Filters {
+export interface Filters {
   categories: FilterOption;
   sizes: FilterOption;
   colors: FilterOption;
 }
 
-const FiltersListContainer: React.FC = () => {
+interface FiltersListProps {
+  setSelectedCategory: (category: string | null) => void;
+  setSelectedSize: (size: string | null) => void;
+  setSelectedColor: (color: string | null) => void;
+}
+
+const FiltersListContainer: React.FC<FiltersListProps> = ({
+  setSelectedCategory,
+  setSelectedSize,
+  setSelectedColor,
+}) => {
   const { options } = filters as { options: Filters };
 
   return (
     <>
-      {Object.keys(options).map((key) => (
-        <Filter
-          key={key}
-          name={options[key as keyof Filters].name}
-          options={options[key as keyof Filters].options}
-        />
-      ))}
+      <Filter
+        name={options.categories.name}
+        options={options.categories.options}
+        onChange={setSelectedCategory}
+      />
+      <Filter
+        name={options.sizes.name}
+        options={options.sizes.options}
+        onChange={setSelectedSize}
+      />
+      <Filter
+        name={options.colors.name}
+        options={options.colors.options}
+        onChange={setSelectedColor}
+      />
     </>
   );
 };

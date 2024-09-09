@@ -5,13 +5,20 @@ import "./styles.css";
 type FilterProps = {
   name: string;
   options: string[];
+  onChange: (selected: string | null) => void;
 };
 
-export default function Filter({ name, options }: FilterProps) {
+export default function Filter({ name, options, onChange }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+    onChange(option);
   };
 
   return (
@@ -28,7 +35,13 @@ export default function Filter({ name, options }: FilterProps) {
         <div className="drawer-content">
           <ul>
             {options.map((option, index) => (
-              <li key={index}>{option}</li>
+              <li
+                key={index}
+                className={selectedOption === option ? "selected" : ""}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </li>
             ))}
           </ul>
         </div>
