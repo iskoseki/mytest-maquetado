@@ -19,7 +19,17 @@
   margin: 0;
   transition: all 0.3s ease;
 }
-
+.not-found-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #333;
+  height: 300px;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: thin;
+}
 @media (min-width: 700px) {
   .catalog__products-layout {
     grid-template-columns: repeat(2, 1fr);

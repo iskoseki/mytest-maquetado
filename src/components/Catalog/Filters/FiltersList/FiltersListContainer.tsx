@@ -2,30 +2,39 @@ import React from "react";
 import "./styles.css";
 import filters from "../../../../assets/db.json";
 import Filter from "../Filter";
+import { Filters } from "./FilterListTypes";
+import { FiltersProps } from "../FiltersTypes";
 
-interface FilterOption {
-  name: string;
-  options: string[];
-}
-
-interface Filters {
-  categories: FilterOption;
-  sizes: FilterOption;
-  colors: FilterOption;
-}
-
-const FiltersListContainer: React.FC = () => {
+const FiltersListContainer: React.FC<FiltersProps> = ({
+  setSelectedCategory,
+  setSelectedSize,
+  setSelectedColor,
+  selectedCategory,
+  selectedSize,
+  selectedColor,
+}) => {
   const { options } = filters as { options: Filters };
 
   return (
     <>
-      {Object.keys(options).map((key) => (
-        <Filter
-          key={key}
-          name={options[key as keyof Filters].name}
-          options={options[key as keyof Filters].options}
-        />
-      ))}
+      <Filter
+        name={options.categories.name}
+        options={options.categories.options}
+        onChange={setSelectedCategory}
+        selectedOption={selectedCategory}
+      />
+      <Filter
+        name={options.sizes.name}
+        options={options.sizes.options}
+        onChange={setSelectedSize}
+        selectedOption={selectedSize}
+      />
+      <Filter
+        name={options.colors.name}
+        options={options.colors.options}
+        onChange={setSelectedColor}
+        selectedOption={selectedColor}
+      />
     </>
   );
 };

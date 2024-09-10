@@ -1,18 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles.css";
+import { FilterProps } from "./FilterType";
 
-type FilterProps = {
-  name: string;
-  options: string[];
-};
-
-export default function Filter({ name, options }: FilterProps) {
+export default function Filter({
+  name,
+  options,
+  onChange,
+  selectedOption,
+}: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDrawer = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const handleOptionClick = useCallback(
+    (option: string) => {
+      onChange(option === selectedOption ? null : option);
+    },
+    [onChange, selectedOption]
+  );
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const drawer = document.querySelector(".drawer-content");
+      if (drawer && !drawer.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="filter-drawer">
@@ -27,8 +48,14 @@ export default function Filter({ name, options }: FilterProps) {
       >
         <div className="drawer-content">
           <ul>
-            {options.map((option, index) => (
-              <li key={index}>{option}</li>
+            {options.map((option) => (
+              <li
+                key={option}
+                className={selectedOption === option ? "selected" : ""}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </li>
             ))}
           </ul>
         </div>

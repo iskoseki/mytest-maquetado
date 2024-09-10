@@ -2,6 +2,9 @@ import "./styles.css";
 import { useState } from "react";
 import HamburgerIcon from "/assets/iconos/hamburguesa.svg";
 
+//harcoded data
+const NavOptions = ["E-SHOP", "LOOKBOOK", "CAMPAÑA", "LOCALES"];
+
 export const NavigationHamburger = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,10 +24,11 @@ export const NavigationHamburger = () => {
           </button>
           <h6 className="nav__actualPage">SALE</h6>
         </div>
-        <a href="#">E-SHOP</a>
-        <a href="#">LOOKBOOK</a>
-        <a href="#">CAMPAÑA</a>
-        <a href="#">LOCALES</a>
+        {NavOptions.map((option, index) => (
+          <a href="/" key={index} className="nav__option">
+            {option}
+          </a>
+        ))}
       </div>
     </div>
   );

@@ -11,9 +11,7 @@ export default function Card({ url, title, price }: CardProps) {
     <article className="card__container">
       <figure>
         <img src={url} alt={title} />
-        <figcaption style={{ display: "none" }}>
-          Descripción de la imagen
-        </figcaption>
+        <figcaption style={{ display: "none" }}>{title}</figcaption>
       </figure>
       <header>
         <h2 className="card__title">{title}</h2>
