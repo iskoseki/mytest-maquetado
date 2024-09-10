@@ -5,7 +5,7 @@
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
             "price": 100,
-            "category": "Zapatillas",
+            "category": "Zapatilla",
             "sizes": ["41"],
             "colors": ["Rojo"]
         },
@@ -14,7 +14,7 @@
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
             "price": 100,
-            "category": "Zapatillas",
+            "category": "Zapatilla",
              "sizes": ["40"],
             "colors": ["Azul"]
         },
@@ -28,7 +28,7 @@
             "colors": ["Azul"]
         },
         {
-            "id": 3,
+            "id": 4,
             "url": "/assets/productos/zapatilla_3.jpg",
             "title": "Zapatilla 3 Run",
             "price": 100,
@@ -37,7 +37,7 @@
             "colors": ["Verde"]
         },
          {
-            "id": 2,
+            "id": 5,
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
             "price": 100,
@@ -46,7 +46,7 @@
             "colors": ["Rojo"]
         },
           {
-            "id": 1,
+            "id": 6,
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
             "price": 100,
@@ -55,26 +55,26 @@
             "colors": ["Negro"]
         },
         {
-            "id": 1,
+            "id": 7,
             "url": "/assets/productos/zapatilla_1.jpg",
             "title": "Zapatilla 1-XFK",
             "price": 100,
             "category": "Zapatilla",
-            "sizes": ["40"],
+            "sizes": ["41"],
             "colors": ["Rojo"]
         },
         {
-            "id": 2,
+            "id": 8,
             "url": "/assets/productos/zapatilla_2.jpg",
             "title": "Zapatilla 2000-X",
             "price": 100,
             "category": "Zapato",
-            "sizes": ["42", "13"],
+            "sizes": ["42"],
             "colors": ["Rojo"]
 
         },
         {
-            "id": 3,
+            "id": 9,
             "url": "/assets/productos/zapatilla_3.jpg",
             "title": "Zapatilla 3 Run",
             "price": 100,
@@ -90,7 +90,7 @@
         },
         "sizes": {
             "name": "Talle",
-            "options": ["39", "40", "41", "42", "44", "13","23"]
+            "options": ["39", "40", "41", "42", "44"]
         },
         "colors": {
             "name": "Colores",

@@ -1,4 +1,3 @@
-import "./App.css";
 import Catalog from "./components/Catalog";
 
 function App() {

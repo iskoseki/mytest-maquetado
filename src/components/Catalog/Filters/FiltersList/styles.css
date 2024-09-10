@@ -56,7 +56,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .filters__list-desktop {
+  .filters__list {
     display: none;
   }
 }

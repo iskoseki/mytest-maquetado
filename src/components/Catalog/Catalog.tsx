@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import "./styles.css";
 import Card from "./Card/Card";
 import Filters from "./Filters/Filters";
@@ -10,18 +10,19 @@ export default function Catalog() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
 
-  const filteredProducts = products.data.filter((product) => {
-    const matchesCategory = selectedCategory
-      ? product.category === selectedCategory
-      : true;
-    const matchesSize = selectedSize
-      ? product.sizes.includes(selectedSize)
-      : true;
-    const matchesColor = selectedColor
-      ? product.colors.includes(selectedColor)
-      : true;
+  const isMatchingProduct = (product: (typeof products.data)[number]) => {
+    const matchesCategory =
+      !selectedCategory || product.category === selectedCategory;
+    const matchesSize = !selectedSize || product.sizes.includes(selectedSize);
+    const matchesColor =
+      !selectedColor || product.colors.includes(selectedColor);
     return matchesCategory && matchesSize && matchesColor;
-  });
+  };
+
+  const filteredProducts = useMemo(
+    () => products.data.filter(isMatchingProduct),
+    [selectedCategory, selectedSize, selectedColor]
+  );
 
   const clearFilters = () => {
     setSelectedCategory(null);
@@ -50,10 +51,9 @@ export default function Catalog() {
         </div>
         <div className="catalog__products-layout">
           {filteredProducts.length > 0 ? (
-            filteredProducts.map((product, index) => (
-              <div key={index} className="product-card">
+            filteredProducts.map((product) => (
+              <div key={product.id} className="product-card">
                 <Card
-                  key={index}
                   url={product.url}
                   title={product.title}
                   price={product.price}
@@ -61,10 +61,18 @@ export default function Catalog() {
               </div>
             ))
           ) : (
-            <p>No hay productos que coincidan con los filtros.</p>
+            <NotFoundProduct />
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function NotFoundProduct() {
+  return (
+    <div className="not-found-product">
+      <p>No hay productos que coincidan con los filtros.</p>
     </div>
   );
 }

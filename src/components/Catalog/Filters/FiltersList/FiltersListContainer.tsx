@@ -2,28 +2,10 @@ import React from "react";
 import "./styles.css";
 import filters from "../../../../assets/db.json";
 import Filter from "../Filter";
+import { Filters } from "./FilterListTypes";
+import { FiltersProps } from "../FiltersTypes";
 
-interface FilterOption {
-  name: string;
-  options: string[];
-}
-
-export interface Filters {
-  categories: FilterOption;
-  sizes: FilterOption;
-  colors: FilterOption;
-}
-
-interface FiltersListProps {
-  setSelectedCategory: (category: string | null) => void;
-  setSelectedSize: (size: string | null) => void;
-  setSelectedColor: (color: string | null) => void;
-  selectedCategory: string | null;
-  selectedSize: string | null;
-  selectedColor: string | null;
-}
-
-const FiltersListContainer: React.FC<FiltersListProps> = ({
+const FiltersListContainer: React.FC<FiltersProps> = ({
   setSelectedCategory,
   setSelectedSize,
   setSelectedColor,

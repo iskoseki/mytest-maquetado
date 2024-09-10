@@ -1,3 +1,3 @@
-import { default as FiltersList } from "./FiltersList";
+import { default as FiltersList } from "./FiltersListContainer";
 
 export default FiltersList;

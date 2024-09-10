@@ -1,8 +1,8 @@
 import "./styles.css";
 
-import Logo from "/logo.svg";
 import { NavigationHamburger } from "./NavigationHamburger";
 import { NavigationHeadButtons } from "../NavigationHeadButtons";
+import Brand from "../Brand";
 
 export default function NavigationHead() {
   return (
@@ -10,10 +10,7 @@ export default function NavigationHead() {
       <div className="nav__hamburger--desktop">
         <NavigationHamburger />
       </div>
-
-      <div className="nav__brand">
-        <img className="nav__logo" src={Logo} alt="Logo" />
-      </div>
+      <Brand />
       <NavigationHeadButtons />
     </div>
   );

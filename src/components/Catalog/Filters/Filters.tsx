@@ -1,16 +1,8 @@
+import { useState } from "react";
 import "./styles.css";
 import FiltersHead from "./FiltersHead/FiltersHead";
 import FiltersListContainer from "./FiltersList/FiltersListContainer";
-
-interface FiltersProps {
-  setSelectedCategory: (category: string | null) => void;
-  setSelectedSize: (size: string | null) => void;
-  setSelectedColor: (color: string | null) => void;
-  clearFilters: () => void;
-  selectedCategory: string | null;
-  selectedSize: string | null;
-  selectedColor: string | null;
-}
+import { FiltersProps } from "./FiltersTypes";
 
 export default function Filters({
   setSelectedCategory,
@@ -21,20 +13,42 @@ export default function Filters({
   selectedSize,
   selectedColor,
 }: FiltersProps) {
+  const [isDrawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setDrawerOpen((prev) => !prev);
+  };
+
   return (
     <div className="filters__container">
       <FiltersHead />
-      <FiltersListContainer
-        setSelectedCategory={setSelectedCategory}
-        setSelectedSize={setSelectedSize}
-        setSelectedColor={setSelectedColor}
-        selectedCategory={selectedCategory}
-        selectedSize={selectedSize}
-        selectedColor={selectedColor}
-      />
-      <button onClick={clearFilters} className="clear-filters-button">
-        Limpiar filtros
+
+      <button
+        className="filters-toggle-button"
+        onClick={toggleDrawer}
+        aria-expanded={isDrawerOpen}
+        aria-controls="filtersDrawer"
+      >
+        {isDrawerOpen ? "Cerrar filtros" : "Abrir filtros"}
       </button>
+
+      <div
+        id="filtersDrawer"
+        className={`filters__drawer ${isDrawerOpen ? "open" : ""}`}
+        aria-hidden={!isDrawerOpen}
+      >
+        <FiltersListContainer
+          setSelectedCategory={setSelectedCategory}
+          setSelectedSize={setSelectedSize}
+          setSelectedColor={setSelectedColor}
+          selectedCategory={selectedCategory}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+        />
+        <button onClick={clearFilters} className="clear-filters-button">
+          Limpiar filtros
+        </button>
+      </div>
     </div>
   );
 }

@@ -1,13 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./styles.css";
-
-type FilterProps = {
-  name: string;
-  options: string[];
-  onChange: (selected: string | null) => void;
-  selectedOption?: string | null;
-};
+import { FilterProps } from "./FilterType";
 
 export default function Filter({
   name,
@@ -16,31 +10,25 @@ export default function Filter({
   selectedOption,
 }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
 
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleDrawer = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
 
-  const handleOptionClick = (option: string) => {
-    if (option === selectedOption) {
-      onChange(null); // Deselecciona si se hace clic en la opción ya seleccionada
-    } else {
-      onChange(option); // Selecciona la nueva opción
-    }
-    // No cerrar el menú aquí
-  };
+  const handleOptionClick = useCallback(
+    (option: string) => {
+      onChange(option === selectedOption ? null : option);
+    },
+    [onChange, selectedOption]
+  );
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        drawerRef.current &&
-        !drawerRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false); // Cierra el menú si se hace clic fuera del menú
+      const drawer = document.querySelector(".drawer-content");
+      if (drawer && !drawer.contains(event.target as Node)) {
+        setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -58,11 +46,11 @@ export default function Filter({
         classNames="drawer"
         unmountOnExit
       >
-        <div className="drawer-content" ref={drawerRef}>
+        <div className="drawer-content">
           <ul>
-            {options.map((option, index) => (
+            {options.map((option) => (
               <li
-                key={index}
+                key={option}
                 className={selectedOption === option ? "selected" : ""}
                 onClick={() => handleOptionClick(option)}
               >

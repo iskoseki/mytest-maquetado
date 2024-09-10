@@ -1,7 +1,4 @@
-type FiltersListTitleProps = {
-  onClick?: () => void;
-  title: string;
-};
+import { FiltersListTitleProps } from "./FilterListTypes";
 
 export const FiltersListTitle: React.FC<FiltersListTitleProps> = ({
   onClick,

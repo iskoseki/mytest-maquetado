@@ -28,6 +28,19 @@
   list-style: none;
   padding: 0;
 }
+.drawer-content li {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drawer-content li:hover {
+  background-color: #f0f0f0;
+}
+
+.drawer-content li.selected {
+  background-color: #cce7ff;
+  font-weight: bold;
+}
 
 .drawer-enter {
   max-height: 0;
@@ -35,10 +48,10 @@
   transition: max-height 300ms ease-in;
 }
 .drawer-enter-active {
-  max-height: 500px; /* Ajusta según sea necesario */
+  max-height: 500px;
 }
 .drawer-exit {
-  max-height: 500px; /* Ajusta según sea necesario */
+  max-height: 500px;
   overflow: hidden;
   transition: max-height 300ms ease-out;
 }

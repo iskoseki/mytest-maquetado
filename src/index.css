@@ -30,7 +30,6 @@ ul {
 .main {
   display: flex;
   justify-content: center;
-  align-items: center;
   max-width: 1366px;
   margin: 3rem auto;
   padding: 0 1rem;
